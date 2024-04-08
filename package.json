@@ -32,12 +32,12 @@
     "lint": "run-p lint:go lint:ts",
     "lint:go": "make lint",
     "lint:ts": "eslint \"**/*.ts\"",
-    "clear": "rimraf dist && mkdirp dist && rimraf __mocks__/cygen/src",
+    "clear": "rimraf dist && mkdirp dist && rimraf __mocks__/modlable/src",
     "format": "run-p format:go format:ts",
     "format:go": "make format",
     "format:ts": "run-s format:prettier format:eslint",
     "format:prettier": "prettier --write \"**/*.{ts,js,json,md}\"",
-    "format:eslint": "eslint --fix \"**/*.ts\""
+    "format:eslint": "eslint --fix \"**/*.{ts,js}\""
   },
   "devDependencies": {
     "@swc/core": "^1.4.12",

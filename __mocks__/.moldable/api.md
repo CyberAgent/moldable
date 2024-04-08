@@ -1,5 +1,5 @@
 ---
-name: "route-handlers"
+name: "api"
 description: "Route Handlers Generator"
 prompts:
   - type: "base"
@@ -24,7 +24,7 @@ prompts:
       - "OPTIONS"
 actions:
   - type: "add"
-    path: "src/app/api{{if .parent}}/{{.parent}}{{end}}/{{.name}}/route.ts"
+    path: "src/apis{{if .parent}}/{{.parent}}{{end}}/{{.name}}/route.ts"
     template: "handler.ts"
 ---
 

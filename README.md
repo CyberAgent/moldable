@@ -1,6 +1,7 @@
 # `moldable`
 
-A CLI tool for code generation under the influence of [plop](https://plopjs.com) and [scaffdog](https://scaff.dog). It has the best of each tool, yet it is faster and more flexible. See the [benchmarks](#benchmarks) for more information.
+A CLI tool for code generation under the influence of [plop](https://plopjs.com) and [scaffdog](https://scaff.dog). It has the best of each tool, yet it is faster and more flexible.
+See the [benchmarks](#benchmarks) for more information.
 
 ## Installation
 
