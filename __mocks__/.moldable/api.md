@@ -1,6 +1,6 @@
 ---
 name: "api"
-description: "Route Handlers Generator"
+description: "API Generator"
 prompts:
   - type: "base"
     name: "name"

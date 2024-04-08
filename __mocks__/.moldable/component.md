@@ -1,5 +1,5 @@
 ---
-name: "components"
+name: "component"
 description: "Component Generator"
 prompts:
   - type: "select"
