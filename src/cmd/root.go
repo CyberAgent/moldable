@@ -5,13 +5,13 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"log"
 	"os"
 	"path"
 	"path/filepath"
 	"strings"
 
 	"github.com/cyberagent-oss/moldable/src/interactions"
+	"github.com/cyberagent-oss/moldable/src/logger"
 	"github.com/cyberagent-oss/moldable/src/str"
 	"github.com/cyberagent-oss/moldable/src/stream"
 	"github.com/go-playground/validator/v10"
@@ -157,7 +157,7 @@ var rootCmd = &cobra.Command{
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		log.Fatal(err)
+		logger.Error(err)
 	}
 }
 
@@ -166,13 +166,13 @@ func init() {}
 func moldable() {
 	wd, getWdErr := os.Getwd()
 	if getWdErr != nil {
-		log.Fatalln(getWdErr)
+		logger.Error(getWdErr)
 	}
 
 	markdown := goldmark.New(goldmark.WithExtensions(extension.GFM, meta.New(meta.WithStoresInDocument())))
 	entries, readDirErr := os.ReadDir(str.BuildPath(".moldable", &wd))
 	if readDirErr != nil {
-		log.Fatalln(readDirErr)
+		logger.Error(readDirErr)
 	}
 	entries = stream.ArrayFilter(entries, func(entry os.DirEntry, _ int) bool {
 		return strings.HasSuffix(entry.Name(), ".md")
@@ -184,7 +184,7 @@ func moldable() {
 			path := str.BuildPath(path.Join(".moldable", entry.Name()), &wd)
 			file, err := os.ReadFile(path)
 			if err != nil {
-				log.Fatalln(err)
+				logger.Error(err)
 			}
 
 			document := markdown.Parser().Parse(text.NewReader(file))
@@ -455,7 +455,7 @@ func moldable() {
 	generatorName := strings.Split(item, " - ")[0]
 
 	if promptErr != nil {
-		log.Fatalln(promptErr)
+		logger.Error(promptErr)
 	}
 
 	config, _ := stream.ArrayFind(configs, func(item Config) bool {
@@ -464,7 +464,7 @@ func moldable() {
 
 	configErr := validate.Struct(config)
 	if configErr != nil {
-		log.Fatalln(configErr)
+		logger.Error(configErr)
 	}
 
 	answers := make(map[string]any)
@@ -489,7 +489,7 @@ func moldable() {
 			}
 			result, err := prompt.Run()
 			if err != nil {
-				log.Fatalln(err)
+				logger.Error(err)
 			}
 			answers[p.name] = result
 		case *SelectPrompt:
@@ -504,7 +504,7 @@ func moldable() {
 			}
 			_, result, err := prompt.Run()
 			if err != nil {
-				log.Fatalln(err)
+				logger.Error(err)
 			}
 			answers[p.name] = result
 		case *MultiSelectPrompt:
@@ -544,7 +544,7 @@ func moldable() {
 			}
 			result, err := prompt.Run()
 			if err != nil {
-				log.Fatalln(err)
+				logger.Error(err)
 			}
 			answer := p.defaultValues
 			result = strings.ToLower(result)
@@ -599,11 +599,11 @@ func moldable() {
 			}
 			file, createErr := os.Create(targetPath)
 			if createErr != nil {
-				log.Fatalln(createErr)
+				logger.Error(createErr)
 			}
 			_, writeErr := file.WriteString(templateFile.code)
 			if writeErr != nil {
-				log.Fatalln(writeErr)
+				logger.Error(writeErr)
 			}
 			added = append(added, target)
 		case *AppendAction:
@@ -637,7 +637,7 @@ func moldable() {
 			content := strings.Join(newLines, "\n")
 			writeFileErr := os.WriteFile(targetPath, []byte(content), 0644)
 			if writeFileErr != nil {
-				log.Fatalln(writeFileErr)
+				logger.Error(writeFileErr)
 			}
 			appended = append(appended, target)
 		default:

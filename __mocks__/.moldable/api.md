@@ -13,28 +13,31 @@ prompts:
     defaultValues: ""
   - type: "multiselect"
     name: "methods"
-    message: "Select HTTP methods you need"
+    message: "Select Express HTTP methods you need"
     choices:
-      - "GET"
-      - "POST"
-      - "PUT"
-      - "DELETE"
-      - "PATCH"
-      - "HEAD"
-      - "OPTIONS"
+      - "get"
+      - "post"
+      - "put"
+      - "delete"
+      - "patch"
+      - "head"
+      - "options"
 actions:
   - type: "add"
-    path: "src/apis{{if .parent}}/{{.parent}}{{end}}/{{.name}}/route.ts"
-    template: "handler.ts"
+    path: "src/apis{{if .parent}}/{{.parent}}{{end}}/{{.name}}.ts"
+    template: "api.ts"
 ---
 
-# handler.ts
+# api.ts
 
 ```ts
-import { NextRequest, NextResponse } from "next/server";
+import express from "express";
+
+const app = express();
+app.use(express.json());
 {{range .methods}}
-export async function {{.}}(req: NextRequest, res: NextResponse) {
-  return res;
-}
+app.{{.}}("/", async (req, res) => {
+  res.json({ message: "Hi There!" });
+});
 {{end}}
 ```

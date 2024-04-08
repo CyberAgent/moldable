@@ -2,11 +2,11 @@ package str
 
 import (
 	"bytes"
-	"log"
 	"strings"
 	"text/template"
 	"unicode"
 
+	"github.com/cyberagent-oss/moldable/src/logger"
 	"github.com/iancoleman/strcase"
 )
 
@@ -89,11 +89,11 @@ func RenderTemplate(tpl string, data map[string]any) string {
 	}
 	path, parseErr := template.New(tpl).Funcs(funcMap).Parse(tpl)
 	if parseErr != nil {
-		log.Fatalln(parseErr)
+		logger.Error(parseErr)
 	}
 	var buf bytes.Buffer
 	if err := path.Execute(&buf, data); err != nil {
-		log.Fatalln(err)
+		logger.Error(err)
 	}
 	return buf.String()
 }
