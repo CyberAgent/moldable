@@ -1,6 +1,6 @@
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  ignorePatterns: ["node_modules/*", "dist/*", "*.config.js", "__mocks__/src/*"],
+  ignorePatterns: ["node_modules/*", "dist/*", "*.config.js", "__mocks__/src/*", ".eslintrc.js"],
   env: {
     browser: true,
     es6: true,
