@@ -3,7 +3,7 @@
 import child_process from "child_process";
 import path from "path";
 
-function getBinaryPath() {
+export function getBinaryPath() {
   const availablePlatforms = ["darwin", "linux", "windows"];
   const availableArchs = ["x64", "arm64"];
 

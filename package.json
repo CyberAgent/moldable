@@ -25,7 +25,7 @@
     "dev:ts": "tsc -w",
     "build": "run-s clear build:go build:ts",
     "build:go": "make",
-    "build:ts": "tsc",
+    "build:ts": "tsc -p tsconfig.build.json",
     "test": "run-p test:go test:ts",
     "test:go": "make test",
     "test:ts": "jest",
