@@ -1,6 +1,9 @@
 {
   "name": "moldable",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=20.12.2"
+  },
   "private": false,
   "description": "Moldable is a fast code generator with markdown templates",
   "main": "dist/cli.js",
