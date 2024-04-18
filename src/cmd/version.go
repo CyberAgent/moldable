@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"log"
+	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -21,5 +21,5 @@ func init() {
 }
 
 func getVersion() {
-	log.Println(os.Getenv("PKG_VERSION"))
+	fmt.Println(os.Getenv("PKG_VERSION"))
 }
