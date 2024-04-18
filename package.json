@@ -41,7 +41,7 @@
     "format:ts": "run-s format:prettier format:eslint",
     "format:prettier": "prettier --write \"**/*.{ts,js,json,md}\"",
     "format:eslint": "eslint --fix \"**/*.{ts,js}\"",
-    "release:changelog": "conventional-changelog --preset conventionalcommits --commit-path $PWD --pkg $PWD/package.json --infile $PWD/CHANGELOG.md --same-file"
+    "changelog": "git-cliff"
   },
   "devDependencies": {
     "@swc/core": "^1.4.12",
@@ -49,11 +49,11 @@
     "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
-    "conventional-changelog-cli": "^4.1.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-prettier": "^5.1.3",
+    "git-cliff": "^2.2.1",
     "mkdirp": "^3.0.1",
     "npm-run-all2": "^6.1.2",
     "prettier": "^3.2.5",
