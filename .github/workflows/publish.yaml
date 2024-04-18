@@ -49,7 +49,7 @@ jobs:
       - name: Version up and generate changelog
         run: |
           npm version ${{ github.event.inputs.tag }} -m "chore: version up ${{ github.event.inputs.tag }}"
-          git push origin ${{ github.event.inputs.tag }}
+          git push origin "v${{ github.event.inputs.tag }}"
           npm run release:changelog
           git add .
           git commit -m "chore: generate changelog for ${{ github.event.inputs.tag }}"
