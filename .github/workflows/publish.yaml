@@ -42,14 +42,18 @@ jobs:
       - name: Create .npmrc
         run: |
           cat << EOF > "$HOME/.npmrc"
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+            //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+            registry=https://registry.npmjs.org/
+            always-auth=true
           EOF
       - name: Version up and generate changelog
         run: |
           npm version ${{ github.event.inputs.tag }}
+          git add .
+          git commit -m "chore: version up ${{ github.event.inputs.tag }}"
           npm run release:changelog
           git add .
-          git commit -m "chore: generate changelog ${{ github.event.inputs.tag }}"
+          git commit -m "chore: generate changelog for ${{ github.event.inputs.tag }}"
           git push origin HEAD
           git tag -a ${{ github.event.inputs.tag }} -m "chore: release ${{ github.event.inputs.tag }}"
           git push origin ${{ github.event.inputs.tag }}
