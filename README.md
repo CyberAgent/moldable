@@ -172,24 +172,23 @@ The syntax of text/template can also be used for headings.
 - Node.js: v20.11.1
 - pnpm: 8.1.1
 
-We measured the time it took to generate a simple React component with each package.
+We measured the time it took to generate a simple React component with each package. The benchmark project is available [here](./benchmarks)
 
 ```tsx
 import React from "react";
 
-export const Page = (children: { children: React.ReactNode }) => <div>{children}</div>;
+export const {{ name }}: React.FC = (children: { children: React.ReactNode }) => <div>{children}</div>;
 ```
 
 ### Result
 
-| Package         | Version | Time (ms) |
-| --------------- | ------- | --------- |
-| plop(turbo gen) |         |           |
-| scaffdog        |         |           |
-| hygen           |         |           |
-| **moldable**    |         |           |
+| Package      | Version | Time (ms) |
+| ------------ | ------- | --------- |
+| plop         | 6.2.11  | 0.73      |
+| scaffdog     | 3.0.0   | 0.16      |
+| **moldable** | latest  | 0.05      |
 
-It is the fastest. This is because it is written in Go and executed by node after compiling it into a binary.
+Moldable is the fastest. This is because it is written in Go and executed by node after compiling it into a binary.
 
 ## Third Party License
 

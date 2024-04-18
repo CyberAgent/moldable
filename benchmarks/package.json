@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "benchmarks",
+  "scripts": {
+    "bench": "run-p bench:*",
+    "bench:plop": "node benchmark.js plop",
+    "bench:scaffdog": "node benchmark.js scaffdog",
+    "bench:moldable": "node benchmark.js moldable"
+  },
+  "devDependencies": {
+    "mkdirp": "^3.0.1",
+    "moldable": "^0.0.4",
+    "npm-run-all2": "^6.1.2",
+    "plop": "^4.0.1",
+    "rimraf": "^5.0.5",
+    "scaffdog": "^3.0.0"
+  }
+}
