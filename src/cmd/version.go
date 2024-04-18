@@ -2,9 +2,12 @@ package cmd
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/spf13/cobra"
+)
+
+var (
+  pkgVersion string
 )
 
 // versionCmd represents the version command
@@ -21,5 +24,5 @@ func init() {
 }
 
 func getVersion() {
-	fmt.Println(os.Getenv("PKG_VERSION"))
+	fmt.Println(pkgVersion)
 }
