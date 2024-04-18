@@ -7,10 +7,10 @@ import (
 )
 
 var (
-  pkgVersion = ""
+	pkgVersion = ""
 )
 
 func main() {
-  os.Setenv("PKG_VERSION", pkgVersion)
+	os.Setenv("PKG_VERSION", pkgVersion)
 	cmd.Execute()
 }

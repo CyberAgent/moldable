@@ -1,8 +1,8 @@
 package logger
 
 import (
-  "runtime"
-  "log"
+	"log"
+	"runtime"
 )
 
 /** https://go.dev/play/p/DkGku2xlhSr */

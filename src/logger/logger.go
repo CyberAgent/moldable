@@ -5,6 +5,6 @@ import (
 )
 
 func Error(msg error) {
-  PrintStack()
-  log.Fatalln(msg)
+	PrintStack()
+	log.Fatalln(msg)
 }
