@@ -41,7 +41,7 @@
     "format:ts": "run-s format:prettier format:eslint",
     "format:prettier": "prettier --write \"**/*.{ts,js,json,md}\"",
     "format:eslint": "eslint --fix \"**/*.{ts,js}\"",
-    "changelog": "git-cliff"
+    "changelog": "git-cliff -o CHANGELOG.md"
   },
   "devDependencies": {
     "@swc/core": "^1.4.12",
