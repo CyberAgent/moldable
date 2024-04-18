@@ -1,0 +1,52 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        type: string
+        description: "Target Version (e.g. 1.0.0)"
+        required: true
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21.1"
+      - run: go version
+      - name: Git Identity
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
+      - name: Install
+        run: |
+          npm ci .
+          npm run install:go
+      - name: Build
+        run: npm run build
+      - name: Create .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+      - name: Publish
+        uses: changesets/action@v1
+        with:
+          version: npm run publish:version -- --snapshot ${{ github.event.inputs.tag }}
+          commit: "chore: release"
+          publish: npm run publish:release
