@@ -1,3 +1,6 @@
+/**
+ * Inspired by https://github.com/mizdra/eslint-interactive/blob/a5ab787c4ccc780a2999b88d59d719cd6c1e651d/e2e-test/global-installation/index.test.ts
+ */
 "use strict";
 
 const { spawn } = require("child_process");
@@ -5,6 +8,7 @@ const { rimraf } = require("rimraf");
 const { mkdirp } = require("mkdirp");
 
 const FILE_NAME = "for-benchmark";
+const MAX = 10;
 
 const LF = String.fromCharCode(0x0a); // \n
 const DOWN = String.fromCharCode(0x1b, 0x5b, 0x42); // ↓
@@ -14,22 +18,12 @@ async function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function readStream(stream) {
-  let result = "";
-  for await (const line of stream) {
-    result += line;
-  }
-  return result;
-}
-
 async function clear() {
   await rimraf("./src");
   await mkdirp("./src");
 }
 
-(async () => {
-  const type = process.argv[2];
-
+async function bench(type) {
   if (type === "plop") {
     const plop = spawn("./node_modules/.bin/plop");
     await wait(1000);
@@ -38,7 +32,7 @@ async function clear() {
     const plopMeasureStart = performance.now();
     plop.stdin.write(LF);
     const plopMeasureEnd = performance.now();
-    console.log(`plop: ${plopMeasureEnd - plopMeasureStart}ms`);
+    return plopMeasureEnd - plopMeasureStart;
   }
 
   if (type === "scaffdog") {
@@ -55,7 +49,7 @@ async function clear() {
     const scaffdogMeasureStart = performance.now();
     scaffdog.stdin.write(LF);
     const scaffdogMeasureEnd = performance.now();
-    console.log(`scaffdog: ${scaffdogMeasureEnd - scaffdogMeasureStart}ms`);
+    return scaffdogMeasureEnd - scaffdogMeasureStart;
   }
 
   if (type === "moldable") {
@@ -68,8 +62,26 @@ async function clear() {
     const moldableMeasureStart = performance.now();
     moldable.stdin.write(LF);
     const moldableMeasureEnd = performance.now();
-    console.log(`moldable: ${moldableMeasureEnd - moldableMeasureStart}ms`);
+    return moldableMeasureEnd - moldableMeasureStart;
   }
 
-  await clear();
+  return 0;
+}
+
+(async () => {
+  const type = process.argv[2];
+
+  const results = [];
+  for (let i = 0; i < MAX; i++) {
+    const result = await bench(type);
+    console.log(`[${type}] ${i + 1} time: ${result}ms`);
+    results.push(result);
+    await clear();
+  }
+
+  console.log(
+    `[${type}] average time of 10 times: ${results.reduce((acc, cur) => acc + cur, 0) / MAX}ms`
+  );
+
+  process.exit(0);
 })();

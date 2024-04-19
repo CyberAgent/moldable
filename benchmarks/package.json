@@ -2,7 +2,7 @@
   "private": true,
   "name": "benchmarks",
   "scripts": {
-    "bench": "run-p bench:*",
+    "bench": "run-s bench:*",
     "bench:plop": "node benchmark.js plop",
     "bench:scaffdog": "node benchmark.js scaffdog",
     "bench:moldable": "node benchmark.js moldable"

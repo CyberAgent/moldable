@@ -169,10 +169,11 @@ The syntax of text/template can also be used for headings.
 - OS: macOS Monterey 12.6.3
 - CPU: Apple M1 Max
 - Memory: 64GB
-- Node.js: v20.11.1
-- pnpm: 8.1.1
+- Node.js: 20.11.1
+- npm: 10.5.1
 
-We measured the time it took to generate a simple React component with each package. The benchmark project is available [here](./benchmarks)
+We measured the time it took to generate a simple React component with each package.
+The benchmark project is available [here](./benchmarks).
 
 ```tsx
 import React from "react";
@@ -182,11 +183,11 @@ export const {{ name }}: React.FC = (children: { children: React.ReactNode }) =>
 
 ### Result
 
-| Package      | Version | Time (ms) |
-| ------------ | ------- | --------- |
-| plop         | 6.2.11  | 0.73      |
-| scaffdog     | 3.0.0   | 0.16      |
-| **moldable** | latest  | 0.05      |
+| Package      | Version | Average time of 10 times(ms) |
+| ------------ | ------- | ---------------------------- |
+| plop         | 6.2.11  | 0.233                        |
+| scaffdog     | 3.0.0   | 0.385                        |
+| **moldable** | 0.0.4   | 0.182                        |
 
 Moldable is the fastest. This is because it is written in Go and executed by node after compiling it into a binary.
 
@@ -196,6 +197,7 @@ Parts of the code from the following projects have been borrowed and modified fo
 
 - [Plop.js(MIT License)](https://github.com/plopjs/plop/blob/b797aafa8ae90adb59462114412505f9ec0c5bb1/LICENSE.md)
 - [Scaffdog(MIT License)](https://github.com/scaffdog/scaffdog/blob/9221585670365f67f6c439aea33a09ca79ae499c/LICENSE)
+- [eslint-interactive(MIT License)](https://github.com/mizdra/eslint-interactive/blob/a5ab787c4ccc780a2999b88d59d719cd6c1e651d/LICENSE)
 
 The list of licenses is available at [THIRD_PARTY_LICENSE](https://github.com/cyberagent-oss/moldable/blob/main/THIRD_PARTY_LICENSE.md).
 
