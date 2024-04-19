@@ -1,3 +1,5 @@
+[![CI](https://github.com/CyberAgent/moldable/actions/workflows/ci.yaml/badge.svg)](https://github.com/CyberAgent/moldable/actions/workflows/ci.yaml)
+
 # `moldable`
 
 A CLI tool for code generation under the influence of [plop](https://plopjs.com) and [scaffdog](https://scaff.dog). It has the best of each tool, yet it is faster and more flexible.
