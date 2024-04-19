@@ -2,14 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.9] - 2024-04-19
+
+### 🐛 Bug Fixes
+
+- Changelog
+- Changelog
+
+### ⚙️ Miscellaneous Tasks
+
+- Generate changelog of 0.0.7
+- Version up 0.0.9
+
 ## [0.0.7] - 2024-04-19
 
 ### 🐛 Bug Fixes
 
 - Changelog
 
+### 📚 Documentation
+
+- Small fix
+- Small fix
+
 ### ⚙️ Miscellaneous Tasks
 
+- Generate changelog of 0.0.6
 - Version up 0.0.7
 
 ## [0.0.6] - 2024-04-19
