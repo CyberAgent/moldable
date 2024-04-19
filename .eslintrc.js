@@ -7,7 +7,7 @@ module.exports = {
     "__mocks__/src/*",
     ".eslintrc.js",
     "coverage/*",
-    "benchmark/*",
+    "benchmarks/*",
   ],
   env: {
     browser: true,

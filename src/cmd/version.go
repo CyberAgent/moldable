@@ -7,7 +7,7 @@ import (
 )
 
 var (
-  pkgVersion string
+	pkgVersion string
 )
 
 // versionCmd represents the version command
