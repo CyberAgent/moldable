@@ -88,10 +88,10 @@ and create Markdown files within it.
     └── bar.md
 ```
 
-The name of the Markdown file corresponds to the Generator name displayed when you launch moldable.
-When you run moldable, an interactive question starts according to the selected Generator, and when all are answered, code is generated.
-This Generator is divided into metadata (in YAML format) and content (in Markdown format).
-The structure of the metadata is as follows. Some properties can use the syntax of Go's [text/template](https://pkg.go.dev/text/template).
+The name of the Markdown file corresponds to the generator name displayed when you launch moldable.
+When you run moldable, an interactive question starts according to the selected generator, and when all are answered, code is generated.
+This generator is divided into metadata (in YAML format) and content (in Markdown format).
+The structure of the metadata is as follows. You can use the syntax of Go's [text/template](https://pkg.go.dev/text/template) in some properties.
 
 | Name        | Description                                                                   | Required           | Type             | Example                                                                                                      |
 | ----------- | ----------------------------------------------------------------------------- | ------------------ | ---------------- | ------------------------------------------------------------------------------------------------------------ |
