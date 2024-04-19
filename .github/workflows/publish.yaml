@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -50,11 +52,13 @@ jobs:
         run: |
           npm version ${{ github.event.inputs.tag }} -m "chore: version up ${{ github.event.inputs.tag }}"
           git push origin "v${{ github.event.inputs.tag }}"
-          npx git-cliff --tag ${{ github.event.inputs.tag }} > temp.md
-          cat CHANGELOG.md >> temp.md
-          mv temp.md CHANGELOG.md
-          git add CHANGELOG.md
-          git commit -m "chore: generate changelog of ${{ github.event.inputs.tag }}"
-          git push origin HEAD
+      - name: Generate a changelog
+        uses: orhun/git-cliff-action@v3
+        id: git-cliff
+        with:
+          config: cliff.toml
+          args: --verbose
+        env:
+          OUTPUT: CHANGELOG.md
       - name: Publish
         run: npm publish
