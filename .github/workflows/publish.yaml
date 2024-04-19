@@ -60,5 +60,10 @@ jobs:
           args: --verbose
         env:
           OUTPUT: CHANGELOG.md
+      - name: Commit and push the changes
+        run: |
+          git add .
+          git commit -m "chore: version up ${{ github.event.inputs.tag }}"
+          git push origin HEAD
       - name: Publish
         run: npm publish
