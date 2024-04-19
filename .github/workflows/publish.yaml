@@ -50,7 +50,9 @@ jobs:
         run: |
           npm version ${{ github.event.inputs.tag }} -m "chore: version up ${{ github.event.inputs.tag }}"
           git push origin "v${{ github.event.inputs.tag }}"
-          npm run changelog
+          npx git-cliff --tag ${{ github.event.inputs.tag }} > temp.md
+          cat CHANGELOG.md >> temp.md
+          mv temp.md CHANGELOG.md
           git add CHANGELOG.md
           git commit -m "chore: generate changelog of ${{ github.event.inputs.tag }}"
           git push origin HEAD

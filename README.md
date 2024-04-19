@@ -142,8 +142,8 @@ In addition, for variables referenced within text/template, you can convert to t
 
 > [!NOTE]
 >
-> By attaching OnlyAlphanumeric to the end of each case modifier (e.g. pascalOnlyAlphanumeric), if the first character of the string is **not alphanumeric**, it is excluded and the case is converted.
-> For example, [projectId] is converted to ProjectId with pascalOnlyAlphanumeric.
+> By attaching `OnlyAlphanumeric` to the end of each case modifier (e.g. `pascalOnlyAlphanumeric`), if the first character of the string is **not alphanumeric**, it is excluded and the case is converted.
+> For example, `[projectId]` is converted to `ProjectId` with `pascalOnlyAlphanumeric`.
 
 The content consists of headings and code blocks as follows.
 
