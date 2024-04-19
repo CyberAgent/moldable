@@ -47,7 +47,7 @@ actions:
 ```
 ````
 
-Execute `moldable` in the root directory of your application, and select the Generator you want to use.
+Execute `moldable` in the root directory of your application, and select the `quick-start` generator.
 
 ```bash
 # Answer the questions
