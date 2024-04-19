@@ -6,7 +6,7 @@ import (
 	"text/template"
 	"unicode"
 
-	"github.com/cyberagent-oss/moldable/src/logger"
+	"github.com/CyberAgent/moldable/src/logger"
 	"github.com/iancoleman/strcase"
 )
 

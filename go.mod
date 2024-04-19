@@ -1,4 +1,4 @@
-module github.com/cyberagent-oss/moldable
+module github.com/CyberAgent/moldable
 
 go 1.21.1
 

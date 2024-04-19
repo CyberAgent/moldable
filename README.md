@@ -201,7 +201,7 @@ Parts of the code from the following projects have been borrowed and modified fo
 - [Scaffdog(MIT License)](https://github.com/scaffdog/scaffdog/blob/9221585670365f67f6c439aea33a09ca79ae499c/LICENSE)
 - [eslint-interactive(MIT License)](https://github.com/mizdra/eslint-interactive/blob/a5ab787c4ccc780a2999b88d59d719cd6c1e651d/LICENSE)
 
-The list of licenses is available at [THIRD_PARTY_LICENSE](https://github.com/cyberagent-oss/moldable/blob/main/THIRD_PARTY_LICENSE.md).
+The list of licenses is available at [THIRD_PARTY_LICENSE](https://github.com/CyberAgent/moldable/blob/main/THIRD_PARTY_LICENSE.md).
 
 ## License
 

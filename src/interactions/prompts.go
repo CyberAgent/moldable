@@ -1,7 +1,7 @@
 package interactions
 
 import (
-	"github.com/cyberagent-oss/moldable/src/stream"
+	"github.com/CyberAgent/moldable/src/stream"
 	"github.com/manifoldco/promptui"
 )
 
